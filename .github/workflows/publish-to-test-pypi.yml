@@ -22,11 +22,9 @@ jobs:
       run: |
         python3 -m pip install build --user
     - name: Build a binary wheel and a source tarball
+      working-directory: build
       run: |
-        cp -r ./py/* ./build
-        cp LICENSE.md ./build
-        cp README.md ./build
-        python3 -m build build
+        python3 -m build
     - name: Store the distribution packages
       uses: actions/upload-artifact@v4
       with:

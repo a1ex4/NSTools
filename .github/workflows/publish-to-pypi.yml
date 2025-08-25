@@ -17,11 +17,9 @@ jobs:
       run: |
         python3 -m pip install build --user
     - name: Build a binary wheel and a source tarball
+      working-directory: build
       run: |
-        cp -r ./py/* ./build
-        cp LICENSE.md ./build
-        cp README.md ./build
-        python3 -m build build
+        python3 -m build
     - name: Store the distribution packages
       uses: actions/upload-artifact@v4
       with:
@@ -37,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/nstools  # Replace <package-name> with your PyPI project name
+      url: https://pypi.org/p/nstools
     permissions:
       id-token: write  # IMPORTANT: mandatory for trusted publishing
 
@@ -50,8 +48,8 @@ jobs:
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-          password: ${{ secrets.TOKEN }}
-          packages-dir: build/dist
+        password: ${{ secrets.TOKEN }}
+        packages-dir: build/dist
 
   github-release:
     name: >-
