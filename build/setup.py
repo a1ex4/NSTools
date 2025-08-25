@@ -3,6 +3,7 @@ from pathlib import Path
 
 appPath = Path(__file__).resolve().parent
 rootPath = appPath.parent
+srcPath = rootPath / "py"
 
 readmePath = rootPath / "README.md"
 
@@ -18,10 +19,10 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     license="MIT",
-    license_files=["../LICENSE.md"],  # ensure license file is included
+    license_files=["../LICENSE.md"],
 
-    package_dir={"": "../py"},
-    packages=setuptools.find_packages(where="../py"),
+    package_dir={"": str(srcPath)},
+    packages=setuptools.find_packages(where=str(srcPath)),
 
     scripts=[
         "bin/ns-verify-folder",
