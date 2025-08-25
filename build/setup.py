@@ -29,7 +29,7 @@ setuptools.setup(
         "bin/ns-verify-folder-log",
         "bin/ns-verify-folder.bat",
         "bin/ns-verify-folder-log.bat",
-        "../py/ns_verify_folder.py",
+        # "../py/ns_verify_folder.py",
     ],
 
     install_requires=[
